@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <div id="form-contact">
+        <form id="miFormulario" action="https://formsubmit.co/aaf4d9d316453c06db1416dbd4b08d3b" method="POST">
+            <span class="text-center">Contactame</span>
+            <div class="input-container">
+                <input type="text" required="" name="Nombre"/>
+                <label>Nombre Completo</label>		
+            </div>
+            <div class="input-container">
+                <input type="email" required="" name="Correo"/>
+                <label>Correo electrónico de contacto</label>		
+            </div>
+            <div class="input-container">
+                <input type="text" required="" name="Motivo"/>
+                <label>Cuéntame, ¿Qué tienes en mente?</label>		
+            </div>
+            <div class="g-recaptcha" name="ignore" data-sitekey="6Lc9irgpAAAAADPiGgNFD1udCtigZZfF0Egmy4mP"></div>
+            <br/>
+            <button type="button" onclick="validarFormulario()">
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Enviar</span>
+            </button>
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.google.com/">
+        </form>
+        
+        <script>
+            function validarFormulario() {
+                var response = grecaptcha.getResponse();
+                if (response.length === 0) {
+                    alert("Por favor, completa el reCAPTCHA.");
+                } else {
+                    document.getElementById("miFormulario").submit();
+                }
+            }
+        </script>
+        
+</body>
+</html>
